@@ -1,0 +1,52 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 20px;
+  background-color: #f5f6fa;
+} 
+
+/* RECOMENDAÇÃO: Use uma cor que contraste muito bem 
+   com as cores principais da sua barbearia (ex: amarelo, verde neon, azul brilhante). 
+*/
+:focus {
+    /* É boa prática remover o 'outline' padrão se você for substituí-lo por 'box-shadow' */
+    outline: none; 
+    
+    /* A sombra é a melhor forma de criar um "grifo" sem mover os elementos vizinhos.
+       Exemplo usando uma sombra amarela brilhante para alto contraste:
+    */
+    box-shadow: 0 0 0 4px #FFD700; /* Borda amarela de 4px de espessura */
+    
+    /* O 'outline-offset' garante um pequeno espaço entre o elemento e o foco, 
+       deixando mais limpo.
+    */
+    outline-offset: 2px; 
+    
+    /* Transição suave (opcional, para um visual moderno) */
+    transition: box-shadow 0.2s ease-in-out; 
+}
+
+/* Importante: Para evitar que esse foco amarelo apareça ao CLICAR com o mouse 
+   (e sim apenas ao usar o teclado), é ideal usar o pseudo-classe :focus-visible.
+   Se o seu navegador for antigo e não suportar :focus-visible, a regra :focus acima já funciona.
+*/
+:focus-visible {
+    /* Repete o grifo, garantindo que o foco pelo teclado seja sempre visível */
+    box-shadow: 0 0 0 4px #FFD700; 
+}
+
+/* Aplique este foco a TODOS os elementos interativos: */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex="0"]:focus {
+    box-shadow: 0 0 0 4px #FFD700;
+    outline: none; 
+}
