@@ -58,6 +58,10 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Barbershop - Sistema de Gestão</title>
+    <button id="theme-toggle" style="position: fixed; top: 20px; right: 20px;">
+  🌙 Modo Escuro
+</button>
+
   </head>
   <body>
     <div vw class="enabled">
@@ -142,6 +146,27 @@
             applyScale(); // Aplica a fonte salva
         }
     </script>
+<script>
+  const toggleButton = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    toggleButton.textContent = '☀️ Modo Claro';
+  }
+
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+      toggleButton.textContent = '☀️ Modo Claro';
+    } else {
+      localStorage.setItem('theme', 'light');
+      toggleButton.textContent = '🌙 Modo Escuro';
+    }
+  });
+</script>
 
 </body>
 </html>
